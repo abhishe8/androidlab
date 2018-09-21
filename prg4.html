@@ -1,0 +1,97 @@
+<html>
+<head>
+<title> android lab program </title>
+<style>
+      #container { border: 1px solid #808080; width: 1000px }
+      #txtarea { border: 1px solid #f0f040; background-color: #fffff0; width: 100%; height: 86%; padding: 4px; margin: 5px; }
+    </style>
+</head>
+<body>
+	<a href="index.html">prg1</a>
+	<a href="prg2.html">prg2</a> 
+	<a href="prg3.html">prg3</a>  
+	<a href="prg4.html">prg4</a>  
+	<a href="prg5.html">prg5</a>  
+	<a href="prg6.html">prg6</a>  
+	<a href="prg7.html">prg7</a>  
+	<a href="prg8.html">prg8</a>  
+	<a href="prg9.html">prg9</a> 
+    <a href="prg10.html">prg10</a>
+
+	<pre>
+
+<div id="container">
+      <textarea id="txtarea" cols="50" rows="5" readonly>
+		
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView" />
+</RelativeLayout>
+-----------------------
+package com.example.bhushan.grapdemo;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import android.widget.ImageView;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate ( savedInstanceState );
+        setContentView ( R.layout.activity_main );
+        //Creating a Bitmap
+        Bitmap bg = Bitmap.createBitmap(720, 1280, Bitmap.Config.ARGB_8888);
+
+        //Setting the Bitmap as background for the ImageView
+        ImageView i = (ImageView) findViewById(R.id.imageView);
+        i.setBackgroundDrawable(new BitmapDrawable(bg));
+
+        //Creating the Canvas Object
+        Canvas canvas = new Canvas(bg);
+
+        //Creating the Paint Object and set its color & TextSize
+        Paint paint = new Paint();
+        paint.setColor(Color.BLUE);
+        paint.setTextSize(50);
+
+        //To draw a Rectangle
+        canvas.drawText("Rectangle", 420, 150, paint);
+        canvas.drawRect(400, 200, 650, 700, paint);
+
+        //To draw a Circle
+        canvas.drawText("Circle", 120, 150, paint);
+        canvas.drawCircle(200, 350, 150, paint);
+
+        //To draw a Square
+        canvas.drawText("Square", 120, 800, paint);
+        canvas.drawRect(50, 850, 350, 1150, paint);
+
+        //To draw a Line
+        canvas.drawText("Line", 480, 800, paint);
+        canvas.drawLine(520, 850, 520, 1150, paint);
+    }
+
+}
+
+
+
+</textarea>
+</div>
+</pre>
+
+</body>
+</html>

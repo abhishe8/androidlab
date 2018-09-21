@@ -1,0 +1,137 @@
+<html>
+<head>
+<title> android lab program </title>
+<style>
+      #container { border: 1px solid #808080; width: 1000px }
+      #txtarea { border: 1px solid #f0f040; background-color: #fffff0; width: 100%; height: 86%; padding: 4px; margin: 5px; }
+    </style>
+</head>
+<body>
+	<a href="index.html">prg1</a>
+	<a href="prg2.html">prg2</a> 
+	<a href="prg3.html">prg3</a>  
+	<a href="prg4.html">prg4</a>  
+	<a href="prg5.html">prg5</a>  
+	<a href="prg6.html">prg6</a>  
+	<a href="prg7.html">prg7</a>  
+	<a href="prg8.html">prg8</a>  
+	<a href="prg9.html">prg9</a> 
+    <a href="prg10.html">prg10</a>
+
+	<pre>
+
+<div id="container">
+      <textarea id="txtarea" cols="50" rows="5" readonly>
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <RelativeLayout
+        android:id="@+id/firstlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="80dp">
+
+        <TextView
+            android:id="@+id/display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button will appear after 10 seconds" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/secondlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firstlayout"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="12"
+            android:layout_marginTop="80dp"
+            android:textSize="36dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/thirdlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/secondlayout"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/clickme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click_me"
+            android:visibility="invisible"
+            android:layout_marginTop="100dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>
+
+
+
+------------------
+package com.example.bhushan.threaddemo;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+    Handler hand = new Handler ();
+    Button clickme;
+    TextView timer;
+    //Runnable run;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate ( savedInstanceState );
+        setContentView ( R.layout.activity_main );
+        timer = ( TextView ) findViewById ( R.id.timer );
+        clickme = ( Button ) findViewById ( R.id.clickme );
+        hand.postDelayed ( run, 5000 );
+    }
+
+    Runnable run = new Runnable() {
+        @Override
+        public void run() {
+            updateTime();
+
+        }
+    };
+
+    public void updateTime() {
+        timer.setText("" + (Integer.parseInt(timer.getText().toString()) - 1));
+        if (Integer.parseInt(timer.getText().toString()) == 0) {
+            clickme.setVisibility(0);
+        } else {
+            hand.postDelayed(run, 5000);
+        }
+    }
+
+
+
+
+
+
+}
+
+
+</textarea>
+</div>
+</pre>
+
+</body>
+</html>
